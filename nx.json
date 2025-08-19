@@ -14,11 +14,6 @@
   },
   "nxCloudId": "68a4bf90c639875b4bf852cc",
   "targetDefaults": {
-    "@angular/build:application": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
     "@nx/eslint:lint": {
       "cache": true,
       "inputs": [
@@ -48,11 +43,5 @@
     }
   ],
   "generators": {
-    "@nx/angular:application": {
-      "e2eTestRunner": "playwright",
-      "linter": "eslint",
-      "style": "scss",
-      "unitTestRunner": "vitest"
-    }
   }
 }
