@@ -1,7 +1,7 @@
 {
-  "name": "feature-pilot",
+  "name": "ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/feature-pilot/src",
+  "sourceRoot": "apps/ui/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -12,7 +12,7 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/feature-pilot"
+        "outputPath": "dist/apps/ui"
       },
       "configurations": {
         "development": {
@@ -27,15 +27,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "feature-pilot:build"
+        "buildTarget": "ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "feature-pilot:build:development",
+          "buildTarget": "ui:build:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "feature-pilot:build:production",
+          "buildTarget": "ui:build:production",
           "hmr": false
         }
       }
@@ -44,14 +44,14 @@
       "executor": "@nx/vite:preview-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "feature-pilot:build"
+        "buildTarget": "ui:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "feature-pilot:build:development"
+          "buildTarget": "ui:build:development"
         },
         "production": {
-          "buildTarget": "feature-pilot:build:production"
+          "buildTarget": "ui:build:production"
         }
       }
     },
@@ -62,7 +62,7 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "apps/feature-pilot/**/*.{ts,svelte,spec.ts}"
+          "apps/ui/**/*.{ts,svelte,spec.ts}"
         ]
       }
     },
@@ -70,7 +70,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "svelte-check",
-        "cwd": "apps/feature-pilot"
+        "cwd": "apps/ui"
       }
     }
   }
