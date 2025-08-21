@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "nx run ui:serve",
+    "serve:ui": "nx run ui:serve",
     "serve:api": "nx serve apps/api",
     "release": "standard-version"
   },
