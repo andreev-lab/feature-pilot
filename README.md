@@ -15,6 +15,10 @@ The goal is to bridge the gap between idea and implementation, enabling rapid, i
 
 This initial phase focuses on building the core functionality of the application in a local development environment. The architecture is designed to be simple and efficient for development, separating the frontend and backend concerns. The plan is to package this into a distributable desktop app in a later phase.
 
+## Nx Monorepo
+
+This project is an Nx monorepo. Frontend applications and libraries share a single `package.json` file and `node_modules` directory at the project's root. This approach streamlines dependency management and ensures consistency across the workspace. Backend services, like the Python API, may have their own separate dependency management systems.
+
 ## High-Level Architecture
 
 The system is composed of two primary, independently running components:
@@ -76,15 +80,26 @@ The system is composed of two primary, independently running components:
 
 This guide assumes you have Python 3.10+, Node.js, and Git installed on your machine.
 
-### 1. Serve backend
+### 1. Install Dependencies
+
+First, install all the necessary Node.js dependencies for the monorepo from the root directory:
 
 ```bash
+# From the root of the project
+npm install
+```
+
+### 2. Serve backend
+
+```bash
+# From the root of the project
 npm run serve:api
 ```
 
-### 2. Serve frontend 
+### 3. Serve frontend 
 
 ```bash
+# From the root of the project
 npm run serve:ui
 ```
 
