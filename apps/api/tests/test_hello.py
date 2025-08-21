@@ -1,8 +1,14 @@
-"""Hello unit test module."""
+from fastapi.testclient import TestClient
+from ..api.main import app
 
-from api.hello import hello
+client = TestClient(app)
 
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello from API"}
 
 def test_hello():
-    """Test the hello function."""
-    assert hello() == "Hello api"
+    response = client.get("/hello")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello api"}

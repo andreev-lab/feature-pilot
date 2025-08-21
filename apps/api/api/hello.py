@@ -1,6 +1,8 @@
-"""Sample Hello World application."""
+from fastapi import APIRouter
 
+router = APIRouter()
 
+@router.get("/hello")
 def hello():
     """Return a friendly greeting."""
-    return "Hello api"
+    return {"message": "Hello api"}

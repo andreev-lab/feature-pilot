@@ -1,6 +1,20 @@
+import uvicorn
+from fastapi import FastAPI
+from api.hello import router as hello_router
 
-def main():
-    print("Hello from API")
+app = FastAPI()
+
+app.include_router(hello_router)
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello from API"}
 
 if __name__ == "__main__":
-    main()
+  uvicorn.run(
+    "main:app",
+    host="0.0.0.0",
+    port=3000,
+    reload=True,
+    access_log=True,
+  )
