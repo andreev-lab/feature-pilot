@@ -1,8 +1,12 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+router = APIRouter(
+  prefix="/health"
+)
 
-@router.get("/hello")
-def hello():
-    """Return a friendly greeting."""
-    return {"message": "Hello api"}
+@router.get("/")
+def health():
+    return {
+      "status": "ok",
+      "message": "Hello api"
+    }

@@ -69,5 +69,8 @@
       "unitTestRunner": "vitest",
       "e2eTestRunner": "playwright"
     }
+  },
+  "tui": {
+    "enabled": false
   }
 }
