@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-router = APIRouter(
+health_router = APIRouter(
   prefix="/health"
 )
 
-@router.get("/")
+@health_router.get("/")
 def health():
     return {
       "status": "ok",
