@@ -1,8 +1,8 @@
 {
-  "name": "api",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "src",
+  "name": "server_core",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/infra/server/core/src",
   "targets": {
     "lock": {
       "executor": "@nxlv/python:lock",
@@ -41,7 +41,7 @@
       "executor": "@nxlv/python:ruff-check",
       "outputs": [],
       "options": {
-        "lintFilePatterns": ["api", "tests"]
+        "lintFilePatterns": ["server/core", "tests"]
       },
       "cache": true
     },
@@ -49,7 +49,7 @@
       "executor": "@nxlv/python:ruff-format",
       "outputs": [],
       "options": {
-        "filePatterns": ["api", "tests"]
+        "filePatterns": ["server/core", "tests"]
       },
       "cache": true
     },
@@ -73,16 +73,9 @@
         "verbose": false,
         "debug": false
       }
-    },
-    "serve": {
-      "executor": "@nxlv/python:run-commands",
-      "options": {
-        "command": "uv run python -m src.main",
-        "cwd": "{projectRoot}"
-      }
     }
   },
-  "tags": ["type:app", "scope:server"],
+  "tags": ["scope:server", "type:infra"],
   "release": {
     "version": {
       "generator": "@nxlv/python:release-version"
