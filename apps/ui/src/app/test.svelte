@@ -1,59 +1,38 @@
 <script lang="ts">
-  import { fpFetch, FpFetchError } from '@fp/infra/ui/data';
+  import { svFetch } from '@fp/infra/ui/data';
 
-  let res = $state<{ count: number; } | null>(null);
-  let error = $state<FpFetchError | null>(null);
-
-  function setState({state}: {state: number}) {
-    res = {
-      count: state
-    }
-    error = null;
-  }
-
-  function setError(err: FpFetchError) {
-    error = err
-    res = null;
-  }
+  const stateStore = svFetch<{ state: number }>('http://0.0.0.0:3000/state');
 
   async function handleFetch() {
-    try {
-      const stateRes = await fpFetch<{state: number}>('http://0.0.0.0:3000/state');
-      setState(stateRes);
-    } catch (e) {
-      setError(e);
-    }
+    stateStore.refetch();
   }
 
   async function handleIncrement() {
-    try {
-      const stateRes = await fpFetch<{state: number}>('http://0.0.0.0:3000/state', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-      setState(stateRes);
-    } catch (e) {
-      setError(e);
-    }
+    svFetch<{ state: number }>('http://0.0.0.0:3000/state', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    stateStore.refetch();
   }
 </script>
 
 <div>
   <button on:mousedown={handleFetch}>Fetch</button>
   <button on:mousedown={handleIncrement}>Increment</button>
-  {#if error}
+
+  {#if $stateStore.loading}
+    <p>Loading...</p>
+  {:else if $stateStore.error}
     <p style="color: red;">
       <span>Error:</span>
-      <span>{error}</span>
+      <span>{$stateStore.error.message}</span>
     </p>
-  {:else }
+  {:else if $stateStore.data}
     <p>
       <span>Server count:</span>
-      <span>{res?.count}</span>
+      <span>{$stateStore.data.state}</span>
     </p>
   {/if}
 </div>
-
-
