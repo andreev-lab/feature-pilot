@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@nx/devkit": "21.4.1",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
@@ -60,5 +61,6 @@
   },
   "nx": {
     "includedScripts": []
-  }
+  },
+  "generators": "./generators.json"
 }
