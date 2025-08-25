@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "create-lib": {
+      "factory": "./src/generator/create-lib/create-lib",
+      "schema": "./src/generator/create-lib/schema.json",
+      "description": "create lib"
+    }
+  }
+}

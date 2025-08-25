@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fp/infra/ui/data": ["libs/infra/ui/data/src/index.ts"]
+      "@fp/infra/ui/data": ["libs/infra/ui/data/src/index.ts"],
+      "local-plugin": ["tools/local-plugin/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

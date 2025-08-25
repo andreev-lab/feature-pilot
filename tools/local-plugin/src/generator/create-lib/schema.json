@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "CreateLib",
+  "title": "Create Lib",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the library."
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain for the library."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of library to create.",
+      "enum": ["server", "ui"],
+      "x-prompt": {
+        "message": "What type of library would you like to create?",
+        "type": "list",
+        "items": [
+          { "value": "server", "label": "server" },
+          { "value": "ui", "label": "ui" }
+        ]
+      }
+    }
+  },
+  "required": ["domain", "type"]
+}
