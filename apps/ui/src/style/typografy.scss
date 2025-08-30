@@ -1,0 +1,159 @@
+@use 'functions' as *;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+
+$transition: 330ms ease-in-out;
+
+body,
+input {
+  font-family: 'Roboto', sans-serif;
+}
+
+@layer base {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  h6 {
+    text-transform: none;
+  }
+
+  h3:not(.raw) {
+    font-size: fromPxToRem(32);
+  }
+
+  h4:not(.raw) {
+    font-size: fromPxToRem(28);
+  }
+
+  h5:not(.raw) {
+    font-size: fromPxToRem(24);
+    font-weight: normal;
+  }
+
+  h6:not(.raw) {
+    font-size: fromPxToRem(20);
+    font-weight: normal;
+  }
+
+
+  span,
+  p {
+    :not(.raw),
+    :not(:has(.raw)) {
+      font-size: fromPxToRem(14);
+    }
+  }
+
+  ol, ul {
+    margin: 0;
+    padding: 0;
+    padding-inline-start: var(--fp-distance-8);
+  }
+
+  button {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  a, button.pw-link-button {
+    text-decoration: none;
+    font-size: fromPxToRem(14);
+    --fp-link-color: var(--fp-primary-text-color);
+    color: var(--fp-link-color);
+    display: inline-block;
+
+    .mat-icon {
+      font-size: inherit;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  a:not(.raw):not([mat-menu-item]),
+  button.pw-link-button {
+    --fp-link-bk-color: transparent;
+    --fp-link-active-color: var(--fp-color-text-secondary);
+    --fp-link-active-bk-color: var(--fp-primary-darker-color);
+    background-color: var(--fp-link-bk-color);
+    position: relative;
+    border-radius: var(--fp-border-radius);
+    transition: background-color $transition, color $transition;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      scale: 0;
+      transform-origin: left;
+      transition: scale $transition, background-color $transition;
+      border-radius: 20%;
+    }
+
+    &:active {
+      --fp-link-bk-color: var(--fp-link-active-bk-color);
+      --fp-link-color: var(--fp-link-active-color);
+    }
+
+
+    &:hover,
+    &:active:not(.active),
+    &.under-line {
+      &::after {
+        scale: 1;
+      }
+    }
+
+    &:focus-visible {
+      outline: solid 1px var(--fp-link-color);
+      outline-offset: -1px;
+    }
+  }
+
+  .text-color-danger,
+  .danger {
+    color: var(--fp-warn-text-color);
+  }
+
+  .text-color-highlight,
+  .warning {
+    color: var(--fp-accent-text-color);
+  }
+
+  .info {
+    color: var(--fp-text-nutral);
+  }
+
+  .text-color-good,
+  .text-color-green {
+    color: var(--fp-color-green);
+  }
+}
+
+a {
+  .mat-icon {
+    font-size: 1em;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+
+
+button.un-styled {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}

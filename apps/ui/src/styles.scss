@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@use './style/global';
+@use './style/varubals';
+@use './style/typografy';
+@use './style/utility-classes';
 
-/* You can add global styles to this file, and also import other style files */
+
 html, body {
   width: 100vw;
+  height: 100vw;
   overflow: hidden;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
 }
 
 button,

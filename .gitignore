@@ -4,6 +4,8 @@
 dist
 tmp
 out-tsc
+reports
+coverage
 
 # dependencies
 node_modules
@@ -34,6 +36,10 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+__pycache__
+*/__pycache__
+*/.pytest_cache
+.coverage
 
 # System Files
 .DS_Store

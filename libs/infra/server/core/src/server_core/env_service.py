@@ -41,6 +41,18 @@ class EnvService:
   def is_local(self: Self) -> bool:
     return self.env() == "local"
 
+  @property
+  @lru_cache()
+  def server_url(self):
+    if self.is_local():
+      return f"http://0.0.0.0:{self.port}"
+    return ""
+
+  @property
+  @lru_cache()
+  def git(self) -> "GitEnv":
+    return GitEnv(self.__get_env_var)
+
   @staticmethod
   def __get_env_var(key: str, default: str | None = None, required: bool = True) -> str | None:
     value = os.getenv(key)
@@ -50,9 +62,28 @@ class EnvService:
       return default
     return value
 
+
+class GitEnv:
+  def __init__(self, get_env_var_func):
+    self.__get_env_var = get_env_var_func
+
+  @property
+  @lru_cache()
+  def github_client_id(self) -> str:
+    client_id = self.__get_env_var("GITHUB_CLIENT_ID", required=True)
+    assert client_id is not None
+    return client_id
+
+  @property
+  @lru_cache()
+  def github_client_secret(self) -> str:
+    client_secret = self.__get_env_var("GITHUB_CLIENT_SECRET", required=True)
+    assert client_secret is not None
+    return client_secret
+
 @lru_cache()
 def inject_env_service():
   return EnvService()
 
 
-__all__ = ['EnvService', 'inject_env_service']
+__all__ = ['EnvService', 'inject_env_service', 'GitEnv']

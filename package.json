@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@nx/devkit": "21.4.1",
+    "dotenv": "^17.2.1",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
@@ -24,7 +25,7 @@
     "@nx/playwright": "21.4.0",
     "@nx/plugin": "21.4.1",
     "@nx/vite": "21.4.1",
-    "@nx/web": "21.4.0",
+    "@nx/web": "21.4.1",
     "@nx/workspace": "21.4.0",
     "@nxlv/python": "^21.2.0",
     "@playwright/test": "^1.36.0",

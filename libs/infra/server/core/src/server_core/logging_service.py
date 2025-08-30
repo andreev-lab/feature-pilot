@@ -92,4 +92,4 @@ def inject_logger(
   """For use with FastAPI dependency injection"""
   return LoggingService(env_service)
 
-__all__ = ['LoggingService', 'inject_env_service']
+__all__ = ['LoggingService', 'inject_logger']
