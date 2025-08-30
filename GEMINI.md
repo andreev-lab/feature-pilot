@@ -6,6 +6,17 @@ This is an nx monorepo for the Feature Pilot project.
 
 The UI application is built with Svelte 5. The source code is located in `apps/feature-pilot`.
 
+## When finishing a task
+Don't serve the apps it will give you nothing, you'll get stuck waiting for the process to finish and it never will.
+
+## Code Style
+1. **Important** Don't touch the project.toml / project.json / package.json when working on code features, it is acceptable only when there is a configuration issue!
+2. **Important** Never run `npm i` inside of a lib, all dependencies are global and are shared with all libs and apps.
+3. Use 2 space indents.
+4. In each file / class, properties / methods / vars / classes that aren't exported should be private. In TS use # for classes, in python use __ as a prefix.
+5. Don't add comments.
+6. For ui always use typescript for script lang and scss for style lang.
+
 ### Key technologies
 
 - **Svelte 5:** A modern JavaScript framework for building user interfaces.
@@ -14,32 +25,6 @@ The UI application is built with Svelte 5. The source code is located in `apps/f
 - **Vitest:** A fast unit test framework.
 - **Playwright:** A framework for end-to-end testing.
 
-### Getting Started
-
-To start the development server, run the following command:
-
-```bash
-npm run serve
-```
-
-This will start the Vite development server and open the application in your browser.
-
-## End-to-End Tests
-
-The end-to-end tests are located in `apps/feature-pilot-e2e`. They are written with Playwright.
-
-To run the tests, use the following command:
-
-```bash
-nx e2e feature-pilot-e2e
-```
-
 ## Workspace
 
-This workspace is managed by nx. You can use the nx CLI to generate code, run tasks, and more.
-
-### Useful commands
-
-- `nx graph`: Open the project graph.
-- `nx run-many --target=build --all`: Build all projects.
-- `nx run-many --target=test --all`: Test all projects.
+This workspace is managed by nx. Use nx MCP server to update / create / delete apps and libs.

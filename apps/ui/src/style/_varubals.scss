@@ -1,0 +1,75 @@
+$distance-unit: 4px;
+$distances: (1,2,3,4,6,8,10,12,14,16,20,24,30,36,42,50,60,70,80,100,125,150,200);
+
+@mixin generate-distances {
+  @each $distance in $distances {
+    --fp-distance-#{$distance}: #{($distance * $distance-unit)};
+  }
+}
+
+
+body {
+  --fp-border: 1px solid black;
+  /**
+    That is only for the IDE to pick up, the real vars are controlled by row 2
+  */
+  --fp-distance-1: 4px;
+  --fp-distance-2: 8px;
+  --fp-distance-3: 12px;
+  --fp-distance-4: 16px;
+  --fp-distance-6: 24px;
+  --fp-distance-8: 32px;
+  --fp-distance-10: 40px;
+  --fp-distance-12: 48px;
+  --fp-distance-14: 56px;
+  --fp-distance-16: 64px;
+  --fp-distance-20: 80px;
+  --fp-distance-24: 96px;
+  --fp-distance-30: 120px;
+  --fp-distance-36: 144px;
+  --fp-distance-42: 168px;
+  --fp-distance-50: 200px;
+  --fp-distance-60: 240px;
+  --fp-distance-70: 280px;
+  --fp-distance-80: 320px;
+  --fp-distance-100: 400px;
+  --fp-distance-125: 500px;
+  --fp-distance-150: 600px;
+  --fp-distance-200: 800px;
+
+  --fp-color-background-primary: #eeeef1;
+  --fp-color-background-secondary: #f1f1f1;
+  --fp-color-background: #fff;
+  --fp-color-text: #000;
+  --fp-color-text-secondary: #fff;
+  --fp-text-nutral: #98989b;
+  --fp-text-primary: #1d253b;
+  --fp-disabled-container-color: #0000001E;
+  --fp-disabled-label-text-color: #00000060;
+  --fp-nutral-color: #98989b;
+  --fp-nutral-light-color: #e7e5e5;
+  --fp-color-orange-light: #FEA62E;
+  --fp-color-orange: #b67310;
+  --fp-color-pink-red:#FE7A74;
+  --fp-color-pink-purple: #ff6491;
+  --fp-color-purple: #B393F7 ;
+  --fp-color-turquoise: #00f2c3;
+  --fp-color-green: #51a351;
+  --fp-green-dark-color: #367036;
+  --fp-color-light-green: #dffaec;
+  --fp-yellow: #fbe972;
+  --fp-color-blue: #19A6F3 ;
+
+  &.dark {
+    --fp-color-background-primary: #373739;
+    --fp-color-background: #1c1818;
+    --fp-color-text: #fff;
+    --fp-color-text-secondary: #1c1a1a;
+    --fp-text-nutral: #454547;
+    --fp-text-primary: #626daf;
+    --fp-disabled-container-color: rgba(177, 177, 177, 0.12);
+    --fp-disabled-label-text-color: rgba(87, 86, 86, 0.38);
+    --fp-nutral-color: #434347;
+  }
+}
+

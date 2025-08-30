@@ -1,2 +1,16 @@
 [tool.uv.workspace]
-members = ["apps/api", "libs/infra/server/core"]
+members = [ "apps/api", "libs/git/server", "libs/infra/server/core" ]
+
+[tool.uv.sources.git_server]
+workspace = true
+
+[dependency-groups]
+"" = [ "git_server" ]
+dev = [
+  "ruff>=0.8.2",
+  "autopep8>=2.3.1",
+  "pytest>=8.3.4",
+  "pytest-sugar>=1.0.0",
+  "pytest-cov>=6.0.0",
+  "pytest-html>=4.1.1"
+]

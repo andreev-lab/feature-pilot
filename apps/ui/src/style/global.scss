@@ -1,0 +1,47 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  --fp-animation-duation-shortest: 90ms;
+  --fp-animation-duation-xs: 110ms;
+  --fp-animation-duation-s: 220ms;
+  --fp-animation-duation-l: 1s;
+  --fp-animation-timing: ease-in-out;
+  --fp-animation: var(--fp-animation-duation-s) var(--fp-animation-timing);
+  --fp-box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1);
+  --fp-gap-s: var(--fp-distance-1);
+  --fp-gap: var(--fp-distance-2);
+  --fp-gap-l: var(--fp-distance-4);
+  --fp-gap-xl: var(--fp-distance-8);
+  --fp-gap-xxl: var(--fp-distance-12);
+  --fp-border-radius: 3px;
+  --fp-border-radius-l: 6px;
+  --fp-border: 1px solid var(--fp-border-color);
+}
+
+.root-element {
+  box-sizing: border-box;
+}
+
+.layout-level-component {
+  padding: 1rem;
+}
+
+
+
+kbd {
+  border: 1px solid var(--kbd-color, var(--fp-text-nutral));
+  color: var(--kbd-color, var(--fp-text-nutral));
+  padding: 0 var(--fp-distance-1);
+  border-radius: var(--fp-border-radius);
+}
+
+textarea,
+textarea.mat-mdc-form-field-textarea-control {
+  resize: none;
+}
+
+

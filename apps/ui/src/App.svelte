@@ -1,11 +1,14 @@
 <script lang="ts">
-  import Test from './app/test.svelte';
+  import {GitPage} from "@fp/git/ui"
 </script>
 
 <main>
-  <Test/>
+  <GitPage/>
 </main>
 
 <style lang="scss">
+  main {
+    height: 100%;
+  }
 </style>
 
