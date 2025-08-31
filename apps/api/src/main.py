@@ -4,28 +4,40 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from git_server.git_router import git_router
-from server_core import EnvService, get_startup_logging_config
+from server_core import inject_db, EnvService, get_startup_logging_config
 from .hello import health_router as hello_router
 
 app = FastAPI()
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:4200", "http://localhost:4300", "http://localhost:8001"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+  CORSMiddleware,
+  allow_origins=["http://localhost:4200", "http://localhost:4300", "http://localhost:8001"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
 )
 
 app.include_router(hello_router)
 app.include_router(git_router)
 
+
+@app.get("/health")
+def health_check():
+  try:
+    db = inject_db()
+    db.all()
+    return {"status": "ok"}
+  except Exception as e:
+    raise HTTPException(status_code=503, detail=str(e))
+
+
 @app.get("/")
 def read_root():
-    return {"message": "Hello from API"}
+  return {"message": "Hello from API"}
 
 
 state = 0
+
 
 @app.get('/state')
 def get_state():
@@ -33,15 +45,17 @@ def get_state():
     "state": state
   }
 
+
 @app.put('/state')
 def increment_state():
   global state
   state += 1
   if state % 5 == 0:
     raise HTTPException(
-        status_code=400, detail=f"The state ({state}) is a multiple of 5!"
+      status_code=400, detail=f"The state ({state}) is a multiple of 5!"
     )
   return get_state()
+
 
 env = EnvService()
 

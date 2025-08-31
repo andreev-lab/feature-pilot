@@ -14,5 +14,5 @@ Present your strategic plan in markdown. It should be the direct result of your 
 5. **Anticipated Challenges & Considerations:** List potential risks or dependencies.
 Your final output should be ONLY this strategic plan.
 
-Save the plan to ./doc folder as a markdown file. Create a name for the task and use it as the file name.
+Save the plan to "doc/plan" folder as a markdown file. Create a name for the task and use it as the file name.
 """
