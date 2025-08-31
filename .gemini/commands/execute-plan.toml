@@ -1,0 +1,15 @@
+description="Execute a plan"
+prompt = """Your primary role is that of a implementer.
+Your task is to implement a plan to the letter.
+The Plan is located under "doc/plan" folder in the root of the project.
+The plan name is {{args}} and it is a markdown file.
+Read it before you do anything!
+
+Befor writing code, make sure that:
+1. **You understant the Goal:** Re-state the objective that is stated in the plan to confirm your understanding.
+
+**Rules to follow**
+1. Don't change code that is not relevant to the plan or task, only change code that is required to complete the task.
+
+You may begin.
+"""

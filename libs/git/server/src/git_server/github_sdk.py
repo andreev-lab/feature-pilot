@@ -1,4 +1,5 @@
 import json
+from functools import lru_cache
 
 import reactivex as rx
 import reactivex.operators as ops
@@ -7,27 +8,35 @@ from pydantic import RootModel
 from server_core import (
   EnvService,
   HttpClientService,
-  LoggingService,
   inject_env_service,
   inject_http_client_service,
-  inject_logger,
   map_root_model,
+  LoggingService,
+  inject_logger,
 )
 
-from git_server.data.git_repo_res import GitRepoRes
+from .git_db_service import inject_git_db_service, GitDbService
+from .data.git_repo_res import GitRepoRes
 
 
 class GithubSdk:
   def __init__(
     self,
-    http_client_service: HttpClientService = Depends(inject_http_client_service),
-    logger: LoggingService = Depends(inject_logger),
-    env_service: EnvService = Depends(inject_env_service),
+    http_client_service: HttpClientService,
+    logger: LoggingService,
+    env_service: EnvService,
+    git_db_service: GitDbService,
   ):
     self.__http_client_service = http_client_service
     self.__logger = logger
     self.__env_service = env_service
-    self.__oauth_access_token: str | None = None
+    self.__git_db_service = git_db_service
+
+  def __get_token(self):
+    token_data = self.__git_db_service.get_auth_token()
+    if token_data and "token" in token_data:
+      return token_data["token"]
+    return None
 
   def get_github_auth_url(self) -> str:
     client_id = self.__env_service.git.github_client_id
@@ -61,18 +70,20 @@ class GithubSdk:
 
     if "access_token" in response_data:
       self.__logger.info(json.dumps(response_data))
-      self.__oauth_access_token = response_data["access_token"]
+      oauth_access_token = response_data["access_token"]
+      self.__git_db_service.save_auth_token(oauth_access_token, "github")
     else:
       raise HTTPException(status_code=400, detail="Failed to obtain access token")
 
   def list_repos(self, org: str) -> rx.Observable[list[str]]:
-    if not self.__oauth_access_token:
+    token = self.__get_token()
+    if not token:
       raise HTTPException(
         status_code=401, detail="Not authenticated with GitHub."
       )
     self.__logger.info("here")
     headers = {
-      "Authorization": f"Bearer {self.__oauth_access_token}",
+      "Authorization": f"Bearer {token}",
       "Accept": "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     }
@@ -87,4 +98,19 @@ class GithubSdk:
     )
 
   def auth_state(self):
-    return {"is_authenticated": self.__oauth_access_token is not None}
+    return {"is_authenticated": self.__get_token() is not None}
+
+
+@lru_cache
+def inject_github_sdk(
+  http_client_service: HttpClientService = Depends(inject_http_client_service),
+  logger: LoggingService = Depends(inject_logger),
+  env_service: EnvService = Depends(inject_env_service),
+  git_db_service: GitDbService = Depends(inject_git_db_service),
+) -> GithubSdk:
+  return GithubSdk(
+    http_client_service=http_client_service,
+    logger=logger,
+    env_service=env_service,
+    git_db_service=git_db_service,
+  )

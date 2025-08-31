@@ -5,16 +5,16 @@ from fastapi import Depends
 from reactivex import operators
 from server_core import (
   EnvService,
-  HttpClientService,
+    HttpClientService,
   LoggingService,
   inject_env_service,
-  inject_http_client_service,
+    inject_http_client_service,
   inject_logger,
 )
 
 from .data.git_repo_res import GitRepoRes
 from .git_sdk import GitSdk
-from .github_sdk import GithubSdk
+from .github_sdk import GithubSdk, inject_github_sdk
 
 
 class GitService:
@@ -67,7 +67,7 @@ def inject_git_service(
   http_client_service: HttpClientService = Depends(inject_http_client_service),
   logger: LoggingService = Depends(inject_logger),
   env_service: EnvService = Depends(inject_env_service),
-  github_sdk: GithubSdk = Depends(GithubSdk),
+  github_sdk: GithubSdk = Depends(inject_github_sdk),
 ) -> GitService:
   return GitService(
     http_client_service=http_client_service,
