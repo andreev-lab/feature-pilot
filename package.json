@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@dvcol/svelte-simple-router": "^2.7.2",
     "@nx/devkit": "21.4.1",
     "dotenv": "^17.2.1",
     "rxjs": "~7.8.0",
