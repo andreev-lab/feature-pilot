@@ -1,13 +1,21 @@
 <script lang="ts">
   import type { Route, RouterOptions } from '@dvcol/svelte-simple-router';
-  import {RouterView, RouterContext} from '@dvcol/svelte-simple-router';
-  import { GitPage } from '@fp/git/ui';
+  import { RouterView } from '@dvcol/svelte-simple-router';
+  import { GIT_DEFAULT_ROUTE, GIT_ROUTES } from '@fp/git/ui';
 
   const routes: Readonly<Route<string>[]> = [
+    ...GIT_ROUTES,
     {
-      name: 'root',
+      path: '*',
+      redirect: {
+        name: GIT_DEFAULT_ROUTE.name
+      }
+    },
+    {
       path: '/',
-      component: GitPage
+      redirect: {
+        name: GIT_DEFAULT_ROUTE.name
+      }
     }
   ]
 
@@ -16,7 +24,5 @@
   } as const
 </script>
 
-<RouterContext>
-  <RouterView {options}/>
-</RouterContext>
+<RouterView {options}/>
 

@@ -36,27 +36,6 @@ def read_root():
   return {"message": "Hello from API"}
 
 
-state = 0
-
-
-@app.get('/state')
-def get_state():
-  return {
-    "state": state
-  }
-
-
-@app.put('/state')
-def increment_state():
-  global state
-  state += 1
-  if state % 5 == 0:
-    raise HTTPException(
-      status_code=400, detail=f"The state ({state}) is a multiple of 5!"
-    )
-  return get_state()
-
-
 env = EnvService()
 
 if __name__ == "__main__":
