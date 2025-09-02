@@ -1,18 +1,9 @@
-description="Small task plan & execute"
-prompt = """Your primary role is that of a principal software engineer
-Your task is to stop, think, and devise a plan to accomplish the following task.
+description = "Small task, no thinking"
+prompt = """This is a very small task that requires no thinking.
+Answer quickly.
+
+Task:
 ```
 {{args}}
 ```
-
-Order of actions:
-1. Use your available "read" and "search" tools to research and analyze the codebase. Gather all necessary context before presenting your plan.
-  Present your strategic plan in markdown. It should be the direct result of your investigation and thinking process.
-  Structure your response with the following sections:
-    1. **Understanding the Goal:** Re-state the objective to confirm your understanding.
-    2. **Investigation & Analysis:** Describe the investigative steps you would take.
-    3. **Proposed Strategic Approach:** Outline the high-level strategy.
-    4. **Verification Strategy:** Explain how the success of this plan would be measured.
-    5. **Anticipated Challenges & Considerations:** List potential risks or dependencies.
-2. Execute the plan.
 """
