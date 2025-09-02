@@ -97,8 +97,28 @@ class GithubSdk:
       ops.do_action(lambda r: self.__logger.info(r)),
     )
 
-  def auth_state(self):
-    return {"is_authenticated": self.__get_token() is not None}
+  def check_auth_status(self) -> rx.Observable[any]:
+    token = self.__get_token()
+    if not token:
+      raise HTTPException(
+        status_code=401, detail="Not authenticated with GitHub."
+      )
+    headers = {
+      "Authorization": f"Bearer {token}",
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    }
+    url = "https://api.github.com/"
+
+    return self.__http_client_service.get(url, headers=headers)
+
+  def auth_state(self) -> rx.Observable[dict[str, bool]]:
+    return self.check_auth_status().pipe(
+      ops.map(lambda r: {"is_authenticated": r is not None}),
+      ops.catch(
+        rx.just({"is_authenticated": False})
+      ),
+    )
 
 
 @lru_cache
