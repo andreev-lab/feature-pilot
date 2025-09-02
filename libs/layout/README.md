@@ -1,11 +1,7 @@
 # layout
 
-This library was generated with [Nx](https://nx.dev).
+This lib in responsible of the entire shell of the app:
+1. Navigation (ui links)
+2. Reserve a slot for the main content (using children)
 
-## Building
-
-Run `nx build layout` to build the library.
-
-## Running unit tests
-
-Run `nx test layout` to execute the unit tests via [Vitest](https://vitest.dev/).
+This lib contains no logic at all, just the required UI to handle the layout.
