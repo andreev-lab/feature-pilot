@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Route, RouterOptions } from '@dvcol/svelte-simple-router';
-  import {RouterView} from '@dvcol/svelte-simple-router';
+  import {RouterView, RouterContext} from '@dvcol/svelte-simple-router';
   import { GitPage } from '@fp/git/ui';
 
   const routes: Readonly<Route<string>[]> = [
@@ -16,5 +16,7 @@
   } as const
 </script>
 
-<RouterView {options}/>
+<RouterContext>
+  <RouterView {options}/>
+</RouterContext>
 
