@@ -1,10 +1,10 @@
 import uvicorn
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from git_server.git_router import git_router
 from server_core import inject_db, EnvService, get_startup_logging_config
+from .config import get_reload_dirs
 from .hello import health_router as hello_router
 
 app = FastAPI()
@@ -44,6 +44,7 @@ if __name__ == "__main__":
     host="0.0.0.0",
     port=env.port,
     reload=True,
+    reload_dirs=get_reload_dirs(),
     log_config=get_startup_logging_config(env),
     access_log=True,
   )
