@@ -19,6 +19,7 @@
       "@fp/infra/ui/data": ["libs/infra/ui/data/src/index.ts"],
       "@fp/layout": ["libs/layout/src/index.ts"],
       "@fp/infra-components": ["libs/infra/components/src/index.ts"],
+      "@fp/infra-components/*": ["libs/infra/components/src/*"],
       "local-plugin": ["tools/local-plugin/src/index.ts"]
     }
   },

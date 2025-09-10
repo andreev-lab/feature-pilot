@@ -1,1 +1,1 @@
-export * from './lib/infra-component-';
+export * from './lib';
