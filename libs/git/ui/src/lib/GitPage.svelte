@@ -12,7 +12,6 @@
   .right-panel,
   .left-panel {
     padding: var(--fp-distance-2) var(--fp-distance-4);
-    background-color: var(--fp-color-background);
   }
 
   .left-panel {

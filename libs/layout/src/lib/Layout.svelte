@@ -121,7 +121,7 @@
 
   .main-content {
     flex-grow: 1;
-    padding: 2rem;
+    padding: 1rem;
     overflow-y: auto;
   }
 </style>
