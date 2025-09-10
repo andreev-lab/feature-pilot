@@ -1,2 +1,2 @@
-export * from './git-routes';
-export {default as GitPage} from './GitPage.svelte'
+export * from './components';
+export {default as GitRouting} from './GitRouting.svelte';

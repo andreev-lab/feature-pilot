@@ -1,0 +1,21 @@
+<script lang="ts">
+  import { GitService } from '../service/git-service';
+  import { navigate } from 'svelte-routing';
+
+  const authCheck = (async () => {
+    const isAuthed = await GitService.isAuthed();
+    if (!isAuthed) {
+      navigate('/auth', { replace: true });
+      return false;
+    }
+    return true;
+  })();
+</script>
+
+{#await authCheck}
+  <!-- You can place a loading spinner here -->
+{:then isAuthed}
+  {#if isAuthed}
+    <slot></slot>
+  {/if}
+{/await}
