@@ -13,7 +13,7 @@
 </script>
 
 {#await authCheck}
-  <!-- You can place a loading spinner here -->
+  <h3>Loading...</h3>
 {:then isAuthed}
   {#if isAuthed}
     <slot></slot>
