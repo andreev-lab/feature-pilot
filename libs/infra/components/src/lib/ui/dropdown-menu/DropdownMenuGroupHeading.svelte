@@ -1,0 +1,33 @@
+<script lang="ts">
+	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
+	import type { ComponentProps } from "svelte";
+
+	let {
+		ref = $bindable(null),
+		class: className,
+		inset,
+		...restProps
+	}: ComponentProps<typeof DropdownMenuPrimitive.GroupHeading> & {
+		inset?: boolean;
+	} = $props();
+</script>
+
+<style lang="scss">
+    :global([data-slot="dropdown-menu-group-heading"]) {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+
+        &[data-inset] {
+            padding-left: 2rem;
+        }
+    }
+</style>
+
+<DropdownMenuPrimitive.GroupHeading
+	bind:ref
+	data-slot="dropdown-menu-group-heading"
+	data-inset={inset}
+	class={className}
+	{...restProps}
+/>
