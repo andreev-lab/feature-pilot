@@ -13,23 +13,9 @@ class _GitService {
   }
 
   checkGithubAuth() {
-    return svFetch<{ authenticated: boolean }>(`${this.#url}/check-auth`, {
+    return fpFetch<{ is_authenticated: boolean }>(`${this.#url}/check-auth`, {
       method: 'GET',
     });
-  }
-
-  async isAuthed() {
-    try {
-      await fpFetch<void>(`${this.#url}/auth`);
-      return true;
-    } catch (error: unknown) {
-      if (!!error && typeof error === 'object' && error instanceof FpFetchError) {
-        if (error.response.status === 401) {
-          return false
-        }
-      }
-      throw error;
-    }
   }
 }
 

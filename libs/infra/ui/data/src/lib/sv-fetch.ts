@@ -1,6 +1,10 @@
 import { writable } from 'svelte/store';
 import { fpFetch, FpFetchError } from './fp-fetch';
 
+/**
+ * @param input
+ * @param init
+ */
 export function svFetch<T>(input: RequestInfo | URL, init?: RequestInit) {
   const { subscribe: storeSubscribe, set } = writable<{ data: T | null; loading: boolean; error: FpFetchError | null }>({
     data: null,

@@ -1,14 +1,14 @@
 <script lang="ts">
-	  import type { DropdownMenuContentProps } from 'bits-ui';
+  import type { DropdownMenuContentProps, DropdownMenuPortalProps } from 'bits-ui';
+  import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
 
 	let {
 		ref = $bindable(null),
 		sideOffset = 4,
 		portalProps,
-		class: className,
 		...restProps
-	}: DropdownMenuPrimitive.ContentProps & {
-		portalProps?: DropdownMenuPrimitive.PortalProps;
+	}: DropdownMenuContentProps & {
+		portalProps?: DropdownMenuPortalProps;
 	} = $props();
 </script>
 
@@ -35,7 +35,6 @@
 		bind:ref
 		data-slot="dropdown-menu-content"
 		{sideOffset}
-		class={className}
 		{...restProps}
 	/>
 </DropdownMenuPrimitive.Portal>

@@ -88,7 +88,7 @@
 			{#if indeterminate}
 				<MinusIcon class="icon-minus" />
 			{:else}
-				<CheckIcon class="icon-check" class:transparent={!checked} />
+				<CheckIcon class={[!checked && 'transparent', 'icon-check']} />
 			{/if}
 		</span>
 		{@render childrenProp?.()}

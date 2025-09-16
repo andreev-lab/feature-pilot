@@ -3,12 +3,16 @@
   import { navigate } from 'svelte-routing';
 
   const authCheck = (async () => {
-    const isAuthed = await GitService.isAuthed();
-    if (!isAuthed) {
-      navigate('/auth', { replace: true });
+    try {
+      const {is_authenticated} = await GitService.checkGithubAuth();
+      if (!is_authenticated) {
+        navigate('/auth', { replace: true });
+        return false;
+      }
+      return true
+    } catch (e) {
       return false;
     }
-    return true;
   })();
 </script>
 
