@@ -13,6 +13,7 @@ export { default as DropdownMenuShortcut } from './DropdownMenuShortcut.svelte';
 export { default as DropdownMenuSubContent } from './DropdownMenuSubContent.svelte';
 export { default as DropdownMenuSubTrigger } from './DropdownMenuSubTrigger.svelte';
 export { default as DropdownMenuTrigger } from './DropdownMenuTrigger.svelte';
+export { default as DropdownMenuButtonTrigger } from './DropdownMenuButtonTrigger.svelte';
 export type { DropdownMenuContentProps } from 'bits-ui';
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;

@@ -8,14 +8,14 @@
     DropdownMenuSub,
     DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
     DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSubContent, DropdownMenuSubTrigger,
-    DropdownMenuTrigger
+    DropdownMenuButtonTrigger
   } from '@fp/infra-components/lib/ui/dropdown-menu';
 </script>
 
 <DropdownMenu>
-  <DropdownMenuTrigger>
-    <Button variant="outline">Open</Button>
-  </DropdownMenuTrigger>
+  <DropdownMenuButtonTrigger>
+    Open
+  </DropdownMenuButtonTrigger>
   <DropdownMenuContent class="w-56" align="start">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuGroup>
@@ -62,6 +62,42 @@
       Log out
       <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
     </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Advanced Usage
+
+### Custom Trigger
+
+For more advanced use cases, you can use the `DropdownMenuTrigger` component and provide your own button or other trigger element.
+
+```sveltehtml
+<script lang="ts">
+  import { Button } from '@fp/infra-components/lib/ui/button';
+  import {
+    DropdownMenu,
+    DropdownMenuSub,
+    DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
+    DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSubContent, DropdownMenuSubTrigger,
+    DropdownMenuTrigger
+  } from '@fp/infra-components/lib/ui/dropdown-menu';
+</script>
+
+<DropdownMenu>
+  <DropdownMenuTrigger>
+    {#snippet child({props})}
+      <Button {...props} variant="outline">Custom Trigger</Button>
+    {/snippet}
+  </DropdownMenuTrigger>
+  <DropdownMenuContent class="w-56" align="start">
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuGroup>
+      <DropdownMenuItem>
+        Profile
+        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuGroup>
   </DropdownMenuContent>
 </DropdownMenu>
 ```
