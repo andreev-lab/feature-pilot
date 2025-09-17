@@ -50,8 +50,8 @@
       }
     }
 
-    .dark &[data-variant="destructive"][data-highlighted] {
-        background-color: hsl(var(--destructive) / 0.2);
+    .dark &.data-destructive[data-highlighted] {
+      background-color: hsl(var(--destructive) / 0.2);
     }
 
     svg:not([class*='text-']) {

@@ -19,46 +19,46 @@
   <DropdownMenuContent class="w-56" align="start">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuGroup>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('Profile clicked')}>
         Profile
         <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
       </DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('Billing clicked')}>
         Billing
         <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
       </DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('Settings clicked')}>
         Settings
         <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
       </DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('Keyboard shortcuts clicked')}>
         Keyboard shortcuts
         <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
       </DropdownMenuItem>
     </DropdownMenuGroup>
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
-      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('Team clicked')}>Team</DropdownMenuItem>
       <DropdownMenuSub>
         <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
         <DropdownMenuSubContent>
-          <DropdownMenuItem>Email</DropdownMenuItem>
-          <DropdownMenuItem>Message</DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => console.log('Email clicked')}>Email</DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => console.log('Message clicked')}>Message</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>More...</DropdownMenuItem>
+          <DropdownMenuItem onSelect={() => console.log('More... clicked')}>More...</DropdownMenuItem>
         </DropdownMenuSubContent>
       </DropdownMenuSub>
-      <DropdownMenuItem>
+      <DropdownMenuItem onSelect={() => console.log('New Team clicked')}>
         New Team
         <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
       </DropdownMenuItem>
     </DropdownMenuGroup>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>GitHub</DropdownMenuItem>
-    <DropdownMenuItem>Support</DropdownMenuItem>
+    <DropdownMenuItem onSelect={() => console.log('GitHub clicked')}>GitHub</DropdownMenuItem>
+    <DropdownMenuItem onSelect={() => console.log('Support clicked')}>Support</DropdownMenuItem>
     <DropdownMenuItem disabled>API</DropdownMenuItem>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>
+    <DropdownMenuItem onSelect={() => console.log('Log out clicked')}>
       Log out
       <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
     </DropdownMenuItem>
