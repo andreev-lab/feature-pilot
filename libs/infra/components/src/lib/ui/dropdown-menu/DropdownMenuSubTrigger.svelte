@@ -16,7 +16,7 @@
 <style lang="scss">
     :global([data-slot="dropdown-menu-sub-trigger"]) {
         display: flex;
-        cursor: default;
+        cursor: pointer;
         user-select: none;
         align-items: center;
         gap: 0.5rem;
@@ -34,8 +34,9 @@
             opacity: 0.5;
         }
 
-        &[data-highlighted],
-        &[data-state="open"] {
+                &[data-highlighted],
+        &[data-state="open"],
+        &:hover {
             background-color: var(--accent);
             color: var(--accent-foreground);
         }

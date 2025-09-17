@@ -15,7 +15,7 @@
     :global([data-slot="dropdown-menu-radio-item"]) {
         position: relative;
         display: flex;
-        cursor: default;
+        cursor: pointer;
         user-select: none;
         align-items: center;
         gap: 0.5rem;
@@ -24,7 +24,8 @@
         font-size: 0.875rem;
         outline: none;
 
-        &:focus {
+                &[data-highlighted],
+        &:hover {
             background-color: var(--accent);
             color: var(--accent-foreground);
         }
