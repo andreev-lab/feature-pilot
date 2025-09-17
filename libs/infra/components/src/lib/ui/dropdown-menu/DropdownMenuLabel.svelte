@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { WithElementRef } from "@fp/infra-components/lib/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -14,12 +15,12 @@
 </script>
 
 <style lang="scss">
-    [data-slot="dropdown-menu-label"] {
+    .dropdown-menu-label {
         padding: 0.375rem 0.5rem;
         font-size: 0.875rem;
         font-weight: 600;
 
-        &[data-inset] {
+        &.inset {
             padding-left: 2rem;
         }
     }
@@ -27,9 +28,7 @@
 
 <div
 	bind:this={ref}
-	data-slot="dropdown-menu-label"
-	data-inset={inset}
-	class={className}
+	class={clsx("dropdown-menu-label", inset && "inset", className)}
 	{...restProps}
 >
 	{@render children?.()}

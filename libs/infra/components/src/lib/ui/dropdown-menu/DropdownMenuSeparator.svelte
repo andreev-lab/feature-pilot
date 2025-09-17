@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -9,7 +10,7 @@
 </script>
 
 <style lang="scss">
-    :global([data-slot="dropdown-menu-separator"]) {
+    :global(.dropdown-menu-separator) {
         background-color: var(--border);
         margin: 0.25rem -0.25rem;
         height: 1px;
@@ -18,7 +19,6 @@
 
 <DropdownMenuPrimitive.Separator
 	bind:ref
-	data-slot="dropdown-menu-separator"
-	class={className}
+	class={clsx("dropdown-menu-separator", className)}
 	{...restProps}
 />

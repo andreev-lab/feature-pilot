@@ -2,6 +2,7 @@
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
 	import CircleIcon from "@lucide/svelte/icons/circle";
 	import { type WithoutChild } from "@fp/infra-components/lib/utils.js";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -12,7 +13,7 @@
 </script>
 
 <style lang="scss">
-    :global([data-slot="dropdown-menu-radio-item"]) {
+    :global(.dropdown-menu-radio-item) {
         position: relative;
         display: flex;
         cursor: pointer;
@@ -65,8 +66,7 @@
 
 <DropdownMenuPrimitive.RadioItem
 	bind:ref
-	data-slot="dropdown-menu-radio-item"
-	class={className}
+	class={clsx("dropdown-menu-radio-item", className)}
 	{...restProps}
 >
 	{#snippet children({ checked })}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
 	import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -14,7 +15,7 @@
 </script>
 
 <style lang="scss">
-    :global([data-slot="dropdown-menu-sub-trigger"]) {
+    :global(.dropdown-menu-sub-trigger) {
         display: flex;
         cursor: pointer;
         user-select: none;
@@ -25,7 +26,7 @@
         font-size: 0.875rem;
         outline: none;
 
-        &[data-inset] {
+        &.inset {
             padding-left: 2rem;
         }
 
@@ -64,9 +65,7 @@
 
 <DropdownMenuPrimitive.SubTrigger
 	bind:ref
-	data-slot="dropdown-menu-sub-trigger"
-	data-inset={inset}
-	class={className}
+	class={clsx("dropdown-menu-sub-trigger", inset && "inset", className)}
 	{...restProps}
 >
 	{@render children?.()}

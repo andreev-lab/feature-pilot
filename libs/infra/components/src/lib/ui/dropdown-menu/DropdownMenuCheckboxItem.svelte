@@ -4,6 +4,7 @@
 	import MinusIcon from "@lucide/svelte/icons/minus";
 	import { type WithoutChildrenOrChild } from "@fp/infra-components/lib/utils.js";
 	import type { Snippet } from "svelte";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -18,7 +19,7 @@
 </script>
 
 <style lang="scss">
-    :global([data-slot="dropdown-menu-checkbox-item"]) {
+    :global(.dropdown-menu-checkbox-item) {
         position: relative;
         display: flex;
         cursor: pointer;
@@ -80,8 +81,7 @@
 	bind:ref
 	bind:checked
 	bind:indeterminate
-	data-slot="dropdown-menu-checkbox-item"
-	class={className}
+	class={clsx("dropdown-menu-checkbox-item", className)}
 	{...restProps}
 >
 	{#snippet children({ checked, indeterminate })}

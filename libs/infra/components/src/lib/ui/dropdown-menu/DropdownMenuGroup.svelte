@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
+  import { clsx } from '@fp/infra/ui/data';
 
-	let { ref = $bindable(null), ...restProps }: DropdownMenuPrimitive.GroupProps = $props();
+	let {
+    ref = $bindable(null),
+    class: className,
+    ...restProps
+  }: DropdownMenuPrimitive.GroupProps & { class?: string; } = $props();
 </script>
 
-<DropdownMenuPrimitive.Group bind:ref data-slot="dropdown-menu-group" {...restProps} />
+<DropdownMenuPrimitive.Group bind:ref class={clsx("dropdown-menu-group", className)} {...restProps} />

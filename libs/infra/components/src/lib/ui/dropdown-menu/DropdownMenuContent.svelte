@@ -1,19 +1,22 @@
 <script lang="ts">
   import type { DropdownMenuContentProps, DropdownMenuPortalProps } from 'bits-ui';
   import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
+    class: className,
 		sideOffset = 4,
 		portalProps,
 		...restProps
 	}: DropdownMenuContentProps & {
+    class?: string;
 		portalProps?: DropdownMenuPortalProps;
 	} = $props();
 </script>
 
 <style lang="scss">
-  :global([data-slot="dropdown-menu-content"]) {
+  :global(.dropdown-menu-content) {
     background-color: var(--popover);
     color: var(--popover-foreground);
     z-index: 50;
@@ -33,7 +36,7 @@
 <DropdownMenuPrimitive.Portal {...portalProps}>
 	<DropdownMenuPrimitive.Content
 		bind:ref
-		data-slot="dropdown-menu-content"
+		class={clsx("dropdown-menu-content", className)}
 		{sideOffset}
 		{...restProps}
 	/>

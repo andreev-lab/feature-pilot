@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from "svelte/elements";
 	import type { WithElementRef } from "@fp/infra-components/lib/utils.js";
+  import { clsx } from '@fp/infra/ui/data';
 
 	let {
 		ref = $bindable(null),
@@ -11,7 +12,7 @@
 </script>
 
 <style lang="scss">
-    [data-slot="dropdown-menu-shortcut"] {
+    .dropdown-menu-shortcut {
         color: var(--muted-foreground);
         margin-left: auto;
         font-size: 0.75rem;
@@ -21,8 +22,7 @@
 
 <span
 	bind:this={ref}
-	data-slot="dropdown-menu-shortcut"
-	class={className}
+	class={clsx("dropdown-menu-shortcut", className)}
 	{...restProps}
 >
 	{@render children?.()}
