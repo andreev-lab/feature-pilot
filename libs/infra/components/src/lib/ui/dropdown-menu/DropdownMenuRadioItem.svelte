@@ -1,7 +1,7 @@
-<script lang="ts">
-	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
-	import CircleIcon from "@lucide/svelte/icons/circle";
-	import { type WithoutChild } from "@fp/infra-components/lib/utils.js";
+<script lang='ts'>
+	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+	import CircleIcon from '@lucide/svelte/icons/circle';
+	import { type WithoutChild } from '@fp/infra/components';
   import { clsx } from '@fp/infra/ui/data';
 
 	let {
@@ -12,7 +12,7 @@
 	}: WithoutChild<DropdownMenuPrimitive.RadioItemProps> = $props();
 </script>
 
-<style lang="scss">
+<style lang='scss'>
     :global(.dropdown-menu-radio-item) {
         position: relative;
         display: flex;
@@ -66,13 +66,13 @@
 
 <DropdownMenuPrimitive.RadioItem
 	bind:ref
-	class={clsx("dropdown-menu-radio-item", className)}
+	class={clsx('dropdown-menu-radio-item', className)}
 	{...restProps}
 >
 	{#snippet children({ checked })}
-		<span class="indicator">
+		<span class='indicator'>
 			{#if checked}
-				<CircleIcon class="icon-circle" />
+				<CircleIcon class='icon-circle' />
 			{/if}
 		</span>
 		{@render childrenProp?.({ checked })}

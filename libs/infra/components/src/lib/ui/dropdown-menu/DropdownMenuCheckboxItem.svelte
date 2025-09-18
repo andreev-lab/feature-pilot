@@ -1,9 +1,9 @@
-<script lang="ts">
-	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
-	import CheckIcon from "@lucide/svelte/icons/check";
-	import MinusIcon from "@lucide/svelte/icons/minus";
-	import { type WithoutChildrenOrChild } from "@fp/infra-components/lib/utils.js";
-	import type { Snippet } from "svelte";
+<script lang='ts'>
+	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+	import CheckIcon from '@lucide/svelte/icons/check';
+	import MinusIcon from '@lucide/svelte/icons/minus';
+	import { type WithoutChildrenOrChild } from '@fp/infra/components';
+	import type { Snippet } from 'svelte';
   import { clsx } from '@fp/infra/ui/data';
 
 	let {
@@ -18,7 +18,7 @@
 	} = $props();
 </script>
 
-<style lang="scss">
+<style lang='scss'>
     :global(.dropdown-menu-checkbox-item) {
         position: relative;
         display: flex;
@@ -81,13 +81,13 @@
 	bind:ref
 	bind:checked
 	bind:indeterminate
-	class={clsx("dropdown-menu-checkbox-item", className)}
+	class={clsx('dropdown-menu-checkbox-item', className)}
 	{...restProps}
 >
 	{#snippet children({ checked, indeterminate })}
-		<span class="indicator">
+		<span class='indicator'>
 			{#if indeterminate}
-				<MinusIcon class="icon-minus" />
+				<MinusIcon class='icon-minus' />
 			{:else}
 				<CheckIcon class={[!checked && 'transparent', 'icon-check']} />
 			{/if}

@@ -1,6 +1,6 @@
-<script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import type { WithElementRef } from "@fp/infra-components/lib/utils.js";
+<script lang='ts'>
+	import type { HTMLAttributes } from 'svelte/elements';
+	import type { WithElementRef } from '@fp/infra/components';
   import { clsx } from '@fp/infra/ui/data';
 
 	let {
@@ -11,7 +11,7 @@
 	}: WithElementRef<HTMLAttributes<HTMLSpanElement>> = $props();
 </script>
 
-<style lang="scss">
+<style lang='scss'>
     .dropdown-menu-shortcut {
         color: var(--color-muted-foreground);
         margin-left: auto;
@@ -22,7 +22,7 @@
 
 <span
 	bind:this={ref}
-	class={clsx("dropdown-menu-shortcut", className)}
+	class={clsx('dropdown-menu-shortcut', className)}
 	{...restProps}
 >
 	{@render children?.()}

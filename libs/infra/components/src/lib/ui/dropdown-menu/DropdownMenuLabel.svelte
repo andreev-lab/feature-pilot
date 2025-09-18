@@ -1,6 +1,6 @@
-<script lang="ts">
-	import type { WithElementRef } from "@fp/infra-components/lib/utils.js";
-	import type { HTMLAttributes } from "svelte/elements";
+<script lang='ts'>
+	import type { WithElementRef } from '@fp/infra/components';
+	import type { HTMLAttributes } from 'svelte/elements';
   import { clsx } from '@fp/infra/ui/data';
 
 	let {

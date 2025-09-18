@@ -4,9 +4,7 @@
 </script>
 
 <div class="layout">
-  {#if sidebar}
-    {@render sidebar()}
-  {/if}
+  {@render sidebar?.()}
   <main class="main-content">
     {@render children?.()}
   </main>

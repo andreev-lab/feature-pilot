@@ -2,14 +2,14 @@
 
 ```sveltehtml
 <script lang="ts">
-  import { Button } from '@fp/infra-components/lib/ui/button';
+  import { Button } from '@fp/infra/components';
   import {
     DropdownMenu,
     DropdownMenuSub,
     DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
     DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSubContent, DropdownMenuSubTrigger,
     DropdownMenuButtonTrigger
-  } from '@fp/infra-components/lib/ui/dropdown-menu';
+  } from '@fp/infra/components';
 </script>
 
 <DropdownMenu>
@@ -74,14 +74,13 @@ For more advanced use cases, you can use the `DropdownMenuTrigger` component and
 
 ```sveltehtml
 <script lang="ts">
-  import { Button } from '@fp/infra-components/lib/ui/button';
+  import { Button } from '@fp/infra/components';
   import {
     DropdownMenu,
-    DropdownMenuSub,
     DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
-    DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSubContent, DropdownMenuSubTrigger,
+    DropdownMenuLabel, DropdownMenuShortcut,
     DropdownMenuTrigger
-  } from '@fp/infra-components/lib/ui/dropdown-menu';
+  } from '@fp/infra/components';
 </script>
 
 <DropdownMenu>

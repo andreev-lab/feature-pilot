@@ -18,8 +18,7 @@
       "@fp/git/ui": ["libs/git/ui/src/index.ts"],
       "@fp/infra/ui/data": ["libs/infra/ui/data/src/index.ts"],
       "@fp/layout": ["libs/layout/src/index.ts"],
-      "@fp/infra-components": ["libs/infra/components/src/index.ts"],
-      "@fp/infra-components/*": ["libs/infra/components/src/*"],
+      "@fp/infra/components": ["libs/infra/components/src/index.ts"],
       "local-plugin": ["tools/local-plugin/src/index.ts"]
     }
   },
