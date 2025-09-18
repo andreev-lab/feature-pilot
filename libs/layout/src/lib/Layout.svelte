@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import Sidebar from './Sidebar.svelte';
-
-  let { children }: { children: Snippet } = $props();
+  let { children, sidebar }: { children: Snippet, sidebar: Snippet } = $props();
 </script>
 
 <div class="layout">
-  <Sidebar />
+  {#if sidebar}
+    {@render sidebar()}
+  {/if}
   <main class="main-content">
     {@render children?.()}
   </main>
