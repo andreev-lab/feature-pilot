@@ -120,6 +120,9 @@ class GithubSdk:
       ),
     )
 
+  def logout(self):
+    self.__git_db_service.delete_auth_token()
+
 
 @lru_cache
 def inject_github_sdk(

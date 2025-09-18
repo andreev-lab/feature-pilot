@@ -22,6 +22,10 @@ class GitDbService:
       return {"token": doc['git']['github_token'], "origin": doc['git']['origin']}
     return None
 
+  def delete_auth_token(self):
+    Token = DbQuery()
+    self.__db.remove(Token.git.exists())
+
 
 @lru_cache
 def inject_git_db_service(db: TinyDB = Depends(inject_db)) -> GitDbService:

@@ -61,6 +61,9 @@ class GitService:
   def auth_state(self):
     return self.__github_sdk.auth_state()
 
+  def logout(self):
+    self.__github_sdk.logout()
+
 
 @lru_cache
 def inject_git_service(

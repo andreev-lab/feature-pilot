@@ -36,7 +36,8 @@
       opacity: 0.5;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-within {
       background-color: var(--accent);
       color: var(--accent-foreground);
     }

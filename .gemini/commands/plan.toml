@@ -15,4 +15,6 @@ Present your strategic plan in markdown. It should be the direct result of your 
 Your final output should be ONLY this strategic plan.
 
 Save the plan to "doc/plan" folder as a markdown file. Create a name for the task and use it as the file name.
+
+**After you have created and saved the plan, your task is complete. Do not take any further action.**
 """
