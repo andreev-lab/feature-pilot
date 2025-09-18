@@ -4,10 +4,6 @@
 
   const {footer} = $props<{footer?: Snippet}>()
 
-  async function logout() {
-    await fpFetch(`/api/git/logout`, { method: 'POST' });
-    window.location.reload();
-  }
 </script>
 
 <aside class="sidebar">
@@ -79,6 +75,4 @@
       }
     }
   }
-
-
 </style>
