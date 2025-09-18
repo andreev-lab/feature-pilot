@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    border-radius: var(--radius-s);
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 500;

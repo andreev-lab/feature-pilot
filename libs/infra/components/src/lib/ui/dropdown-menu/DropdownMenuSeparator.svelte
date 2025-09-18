@@ -11,7 +11,7 @@
 
 <style lang="scss">
     :global(.dropdown-menu-separator) {
-        background-color: var(--border);
+        background-color: var(--color-border);
         margin: 0.25rem -0.25rem;
         height: 1px;
     }

@@ -38,12 +38,12 @@
                 &[data-highlighted],
         &[data-state="open"],
         &:hover {
-            background-color: var(--accent);
-            color: var(--accent-foreground);
+            background-color: var(--color-accent);
+            color: var(--color-accent-foreground);
         }
 
         svg:not([class*='text-']) {
-            color: var(--muted-foreground);
+            color: var(--color-muted-foreground);
         }
 
         svg:not([class*='size-']) {

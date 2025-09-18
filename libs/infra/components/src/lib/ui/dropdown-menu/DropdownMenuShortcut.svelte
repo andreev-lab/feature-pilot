@@ -13,7 +13,7 @@
 
 <style lang="scss">
     .dropdown-menu-shortcut {
-        color: var(--muted-foreground);
+        color: var(--color-muted-foreground);
         margin-left: auto;
         font-size: 0.75rem;
         letter-spacing: 0.1em;

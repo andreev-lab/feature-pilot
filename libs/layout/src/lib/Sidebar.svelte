@@ -48,12 +48,12 @@
 <style lang="scss">
   .sidebar {
     width: 250px;
-    background-color: var(--color-sidebar);
-    color: var(--color-sidebar-foreground);
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
     display: flex;
     flex-direction: column;
     padding: var(--fp-distance-6);
-    border-right: 1px solid var(--color-sidebar-border);
+    border-right: 1px solid oklch(from var(--color-primary-foreground) l c h / 0.1);
   }
 
   .sidebar-header {
@@ -66,11 +66,11 @@
     gap: var(--fp-distance-3);
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-sidebar-foreground);
+    color: var(--color-primary-foreground);
     text-decoration: none;
 
     &:hover {
-      color: var(--color-sidebar-primary-foreground);
+      color: var(--color-primary-foreground);
     }
   }
 
@@ -87,13 +87,13 @@
       display: block;
       padding: var(--fp-distance-3) var(--fp-distance-4);
       border-radius: var(--radius-md);
-      color: var(--color-sidebar-accent-foreground);
+      color: oklch(from var(--color-primary-foreground) l c h / 0.75);
       text-decoration: none;
       transition: background-color 0.2s, color 0.2s;
 
       &:hover {
-        background-color: var(--color-sidebar-accent);
-        color: var(--color-sidebar-foreground);
+        background-color: oklch(from var(--color-primary) calc(l + 0.07) c h);
+        color: var(--color-primary-foreground);
       }
     }
   }
@@ -109,13 +109,13 @@
     outline: inherit;
     width: 100%;
     text-align: left;
-    color: var(--color-sidebar-foreground);
+    color: var(--color-primary-foreground);
     padding: var(--fp-distance-2);
     border-radius: var(--radius-md);
 
 
     &:hover {
-      background-color: var(--color-sidebar-accent);
+      background-color: oklch(from var(--color-primary) calc(l + 0.07) c h);
     }
   }
 
@@ -132,11 +132,11 @@
 
   .user-name {
     font-weight: 600;
-    color: var(--color-sidebar-foreground);
+    color: var(--color-primary-foreground);
   }
 
   .user-role {
     font-size: 0.875rem;
-    color: var(--color-sidebar-accent-foreground);
+    color: oklch(from var(--color-primary-foreground) l c h / 0.6);
   }
 </style>

@@ -17,14 +17,14 @@
 
 <style lang="scss">
   :global(.dropdown-menu-content) {
-    background-color: var(--popover);
-    color: var(--popover-foreground);
+    background-color: var(--color-popover);
+    color: var(--color-popover-foreground);
     z-index: 50;
     min-width: 8rem;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 0.375rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--color-border);
     padding: 0.25rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     outline: none;

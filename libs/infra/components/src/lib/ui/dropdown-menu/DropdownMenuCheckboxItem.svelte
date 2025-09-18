@@ -33,8 +33,8 @@
 
                 &[data-highlighted],
         &:hover {
-            background-color: var(--accent);
-            color: var(--accent-foreground);
+            background-color: var(--color-accent);
+            color: var(--color-accent-foreground);
         }
 
         &[data-disabled] {

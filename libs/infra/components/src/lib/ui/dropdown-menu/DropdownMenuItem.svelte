@@ -38,25 +38,25 @@
 
     &:hover,
     &:focus-within {
-      background-color: var(--accent);
-      color: var(--accent-foreground);
+      background-color: var(--color-accent);
+      color: var(--color-accent-foreground);
     }
 
     &.variant-destructive {
-      color: var(--destructive);
+      color: var(--color-destructive);
 
       &[data-highlighted] {
-        background-color: hsl(var(--destructive) / 0.1);
-        color: var(--destructive);
+        background-color: hsl(var(--color-destructive) / 0.1);
+        color: var(--color-destructive);
       }
     }
 
     .dark &.data-destructive[data-highlighted] {
-      background-color: hsl(var(--destructive) / 0.2);
+      background-color: hsl(var(--color-destructive) / 0.2);
     }
 
     svg:not([class*='text-']) {
-      color: var(--muted-foreground);
+      color: var(--color-muted-foreground);
     }
 
     svg:not([class*='size-']) {
