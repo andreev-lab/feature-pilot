@@ -5,7 +5,9 @@
 </script>
 
 <Router>
-  <Route path="/auth" component={GitAuth}/>
+  <Route path="/auth">
+    <GitAuth/>
+  </Route>
   <Route>
     <AppLayout/>
   </Route>
