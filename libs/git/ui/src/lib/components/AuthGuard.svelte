@@ -4,13 +4,10 @@
 
   const authCheck = (async () => {
     try {
-      const {is_authenticated} = await GitService.checkGithubAuth();
-      if (!is_authenticated) {
-        navigate('/auth', { replace: true });
-        return false;
-      }
+      await GitService.isUserAuthedOrThrow();
       return true
     } catch (e) {
+      navigate('/auth', { replace: true });
       return false;
     }
   })();

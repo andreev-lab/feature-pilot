@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fpFetch } from '@fp/infra/ui/data';
   import type { Snippet } from 'svelte';
 
   const {footer} = $props<{footer?: Snippet}>()

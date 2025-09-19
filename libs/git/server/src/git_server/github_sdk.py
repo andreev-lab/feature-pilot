@@ -100,6 +100,7 @@ class GithubSdk:
   def check_auth_status(self) -> rx.Observable[any]:
     token = self.__get_token()
     if not token:
+      print(token)
       raise HTTPException(
         status_code=401, detail="Not authenticated with GitHub."
       )

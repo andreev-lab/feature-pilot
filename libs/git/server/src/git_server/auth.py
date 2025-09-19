@@ -13,5 +13,4 @@ class AuthChecker:
     except Exception as e:
       raise HTTPException(status_code=401, detail="Not authenticated") from e
 
-
 require_auth = AuthChecker()

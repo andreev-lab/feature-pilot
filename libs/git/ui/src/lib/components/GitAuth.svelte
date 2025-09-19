@@ -3,7 +3,6 @@
   import { GitService } from '../service/git-service';
   import { env } from '@fp/infra/ui/data';
 
-  export let onRepoList: ((repoList: string[]) => void) | undefined = undefined;
 
   let org: string = '';
   let pat: string = '';
@@ -16,9 +15,6 @@
   $: repos = $repoFetch?.data?.repos || [];
   $: loading = $repoFetch?.loading || false;
   $: error = $repoFetch?.error ? $repoFetch.error.message : null;
-  if (repos && onRepoList) {
-    onRepoList(repos);
-  }
 
   function fetchRepos() {
     fetchOptions.set({ org, pat });

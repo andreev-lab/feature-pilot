@@ -1,4 +1,4 @@
-import { env, fpFetch, FpFetchError, svFetch } from '@fp/infra/ui/data';
+import { env, fpFetch, svFetch } from '@fp/infra/ui/data';
 class _GitService {
   #url = `${env.serverUrl}/git`;
 
@@ -12,8 +12,8 @@ class _GitService {
     })
   }
 
-  checkGithubAuth() {
-    return fpFetch<{ is_authenticated: boolean }>(`${this.#url}/check-auth`, {
+  isUserAuthedOrThrow() {
+    return fpFetch<{ is_authenticated: boolean }>(`${this.#url}/auth`, {
       method: 'GET',
     });
   }
