@@ -1,10 +1,13 @@
 import json
 from functools import lru_cache
+from typing import LiteralString, Literal
 
 import reactivex as rx
 import reactivex.operators as ops
 from fastapi import Depends, HTTPException
 from pydantic import RootModel
+
+from git_server.sdk.data import FpAuthRes
 from server_core import (
   EnvService,
   HttpClientService,
@@ -15,8 +18,8 @@ from server_core import (
   inject_logger,
 )
 
-from .git_db_service import inject_git_db_service, GitDbService
-from .data.git_repo_res import GitRepoRes
+from git_server.git_db_service import inject_git_db_service, GitDbService
+from git_server.data.git_repo_res import GitRepoRes
 
 
 class GithubSdk:
@@ -113,11 +116,11 @@ class GithubSdk:
 
     return self.__http_client_service.get(url, headers=headers)
 
-  def auth_state(self) -> rx.Observable[dict[str, bool]]:
+  def auth_state(self) -> rx.Observable[FpAuthRes]:
     return self.check_auth_status().pipe(
-      ops.map(lambda r: {"is_authenticated": r is not None}),
+      ops.map(lambda r: FpAuthRes(is_authenticated=r is not None)),
       ops.catch(
-        rx.just({"is_authenticated": False})
+        rx.just(FpAuthRes(is_authenticated=False))
       ),
     )
 

@@ -14,7 +14,7 @@ from server_core import (
 
 from .data.git_repo_res import GitRepoRes
 from .git_sdk import GitSdk
-from .github_sdk import GithubSdk, inject_github_sdk
+from git_server.sdk.github_sdk import GithubSdk, inject_github_sdk
 
 
 class GitService:
