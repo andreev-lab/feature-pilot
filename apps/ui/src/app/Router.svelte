@@ -1,14 +1,18 @@
 <script lang="ts">
   import { Route, Router } from 'svelte-routing';
-  import { GitAuth } from '@fp/git/ui';
+  import { AuthGuard, GitAuth, UnAuthGuard } from '@fp/git/ui';
   import AppLayout from './AppLayout.svelte';
 </script>
 
 <Router>
   <Route path="/auth">
-    <GitAuth/>
+    <UnAuthGuard>
+      <GitAuth/>
+    </UnAuthGuard>
   </Route>
   <Route>
-    <AppLayout/>
+    <AuthGuard>
+      <AppLayout/>
+    </AuthGuard>
   </Route>
 </Router>

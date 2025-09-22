@@ -3,6 +3,7 @@
   import { GitRouting } from '@fp/git/ui';
   import { DropdownMenuTrigger, DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@fp/infra/components';
   import { fpFetch } from '@fp/infra/ui/data';
+  import { Router } from 'svelte-routing';
 
   async function handleLogout() {
     await fpFetch(`/api/git/logout`, { method: 'POST' });
@@ -11,7 +12,9 @@
 </script>
 
 <Layout>
-  <GitRouting/>
+  <Router>
+    <GitRouting/>
+  </Router>
   {#snippet sidebar()}
     <Sidebar>
       {#snippet footer()}

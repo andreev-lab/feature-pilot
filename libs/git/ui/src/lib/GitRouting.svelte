@@ -5,13 +5,11 @@
   import { AuthGuard } from './components/index.js';
 </script>
 
-<Router>
-  <Route path="/project">
-    <AuthGuard>
-      <GitPage />
-    </AuthGuard>
-  </Route>
-  <Route>
-    <Redirect to="/project"/>
-  </Route>
-</Router>
+<Route path="/project">
+  <AuthGuard>
+    <GitPage />
+  </AuthGuard>
+</Route>
+<Route>
+  <Redirect to="/project"/>
+</Route>

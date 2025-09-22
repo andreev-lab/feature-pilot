@@ -1,20 +1,18 @@
 <script lang="ts">
-  import { GitService } from '../service/git-service';
   import { navigate } from 'svelte-routing';
+  import { isUserAuthenticated } from './is-user-authenticated';
 
   const authCheck = (async () => {
-    try {
-      await GitService.isUserAuthedOrThrow();
-      return true
-    } catch (e) {
+    const auth = isUserAuthenticated()
+    if (!auth) {
       navigate('/auth', { replace: true });
-      return false;
     }
+    return auth
   })();
 </script>
 
 {#await authCheck}
-  <h3>Loading...</h3>
+  <h3>Thinking...</h3>
 {:then isAuthed}
   {#if isAuthed}
     <slot></slot>
