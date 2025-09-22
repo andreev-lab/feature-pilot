@@ -23,7 +23,7 @@
       <GithubIcon />
       Login with GitHub
     </Button>
-    <Button  disabled>
+    <Button href={gitlabLogin} disabled>
       <GitlabIcon />
       Login with GitLab
     </Button>
