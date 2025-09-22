@@ -5,8 +5,8 @@
   import ButbucketIcon from './icon/ButbucketIcon.svelte';
 
   const githubLogin = `${env.serverUrl}/git/login/github`;
-  const gitlabLogin = `${env.serverUrl}/git/login/github`;
-  const bitbucketLogin = `${env.serverUrl}/git/login/github`;
+  const gitlabLogin = `not-ready`;
+  const bitbucketLogin = `not-ready`;
 
 </script>
 
