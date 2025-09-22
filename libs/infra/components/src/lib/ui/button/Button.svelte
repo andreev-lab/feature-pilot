@@ -63,53 +63,53 @@
     }
 
     &.button--default {
-      background-color: var(--primary);
-      color: var(--primary-foreground);
+      background-color: var(--color-primary);
+      color: var(--color-primary-foreground);
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       &:hover {
-        background-color: var(--primary);
+        background-color: var(--color-primary);
         opacity: 0.9;
       }
     }
 
     &.button--destructive {
-      background-color: var(--destructive);
-      color: var(--destructive-foreground);
+      background-color: var(--color-destructive);
+      color: var(--color-destructive-foreground);
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       &:hover {
-        background-color: var(--destructive);
+        background-color: var(--color-destructive);
         opacity: 0.9;
       }
     }
 
     &.button--outline {
       background-color: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--color-border);
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       &:hover {
-        background-color: var(--accent);
-        color: var(--accent-foreground);
+        background-color: var(--color-accent);
+        color: var(--color-accent-foreground);
       }
     }
     &.button--secondary {
-      background-color: var(--secondary);
-      color: var(--secondary-foreground);
+      background-color: var(--color-secondary);
+      color: var(--color-secondary-foreground);
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       &:hover {
-        background-color: var(--secondary);
+        background-color: var(--color-secondary);
         opacity: 0.8;
       }
     }
 
     &.button--ghost {
       &:hover {
-        background-color: var(--accent);
-        color: var(--accent-foreground);
+        background-color: var(--color-accent);
+        color: var(--color-accent-foreground);
       }
     }
 
     &.button--link {
-      color: var(--primary);
+      color: var(--color-primary);
       text-underline-offset: 4px;
       &:hover {
         text-decoration: underline;
@@ -118,10 +118,8 @@
 
     &.button--default {
       height: 2.25rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding: 0.5rem 1rem;
+
       &.has-svg {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
