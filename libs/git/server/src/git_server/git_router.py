@@ -2,8 +2,6 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
-import reactivex.operators as ops
-
 from .auth import require_auth
 from .git_service import GitService, inject_git_service
 
