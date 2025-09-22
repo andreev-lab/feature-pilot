@@ -154,13 +154,16 @@
       height: 2.25rem;
     }
   }
+  a {
+    box-sizing: border-box;
+  }
 </style>
 
 {#if href}
 	<a
 		bind:this={ref}
 		data-slot="button"
-		class="button button--{variant} button--{size} {className || ''} {hasSvg ? 'has-svg' : ''}"
+		class="raw button button--{variant} button--{size} {className || ''} {hasSvg ? 'has-svg' : ''}"
 		href={disabled ? undefined : href}
 		aria-disabled={disabled}
 		role={disabled ? 'link' : undefined}

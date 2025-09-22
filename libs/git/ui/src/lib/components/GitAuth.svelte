@@ -4,17 +4,10 @@
   import { GithubIcon, GitlabIcon } from '@lucide/svelte/icons';
   import ButbucketIcon from './icon/ButbucketIcon.svelte';
 
-  function handleGithubLogin() {
-    window.location.href = `${env.serverUrl}/git/login/github`;
-  }
+  const githubLogin = `${env.serverUrl}/git/login/github`;
+  const gitlabLogin = `${env.serverUrl}/git/login/github`;
+  const bitbucketLogin = `${env.serverUrl}/git/login/github`;
 
-  function handleGitlabLogin() {
-    console.log('GitLab login clicked (disabled)');
-  }
-
-  function handleBitbucketLogin() {
-    console.log('Bitbucket login clicked (disabled)');
-  }
 </script>
 
 <style lang="scss">
@@ -26,15 +19,15 @@
 <main class="height-100 center-text flex column gap-lg container">
   <h3>Login</h3>
   <div class="flex column center-vr gap-inherit height-100">
-    <Button on:click={handleGithubLogin}>
+    <Button href={githubLogin}>
       <GithubIcon />
       Login with GitHub
     </Button>
-    <Button on:click={handleGitlabLogin} disabled>
+    <Button  disabled>
       <GitlabIcon />
       Login with GitLab
     </Button>
-    <Button on:click={handleBitbucketLogin} disabled>
+    <Button href={bitbucketLogin} disabled>
       <ButbucketIcon/>
       Login with Bitbucket
     </Button>
