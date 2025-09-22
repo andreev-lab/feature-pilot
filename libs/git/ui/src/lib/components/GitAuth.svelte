@@ -17,8 +17,14 @@
   }
 </script>
 
-<main class="height-100 center-text flex column gap-lg ">
-  <h3>Git Auth</h3>
+<style lang="scss">
+  .container {
+    margin-top: var(--fp-distance-4);
+  }
+</style>
+
+<main class="height-100 center-text flex column gap-lg container">
+  <h3>Login</h3>
   <div class="flex column center-vr gap-inherit height-100">
     <Button on:click={handleGithubLogin}>
       <GithubIcon />
