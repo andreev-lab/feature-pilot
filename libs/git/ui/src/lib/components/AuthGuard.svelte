@@ -3,8 +3,9 @@
   import { isUserAuthenticated } from './is-user-authenticated';
 
   const authCheck = (async () => {
-    const auth = isUserAuthenticated()
+    const auth = await isUserAuthenticated();
     if (!auth) {
+      console.log('Nav');
       navigate('/auth', { replace: true });
     }
     return auth

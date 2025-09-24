@@ -1,3 +1,5 @@
+import os
+
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,8 +41,13 @@ def read_root():
 env = EnvService()
 
 if __name__ == "__main__":
+  # To debug the python server, we need to run it using the IDE.When running via IDE directly using UV and not nx,
+  # it runs at to root level so src in not found and we need the full modul path.I've added the env var to the IDE
+  # script so that it picks up the correct module to enable debugging.
+  env_module = os.getenv("PY_MODULE")
+  module = env_module if env_module is not None else "src.main"
   uvicorn.run(
-    "src.main:app",
+    f"{module}:app",
     host="0.0.0.0",
     port=env.port,
     reload=True,
@@ -48,3 +55,4 @@ if __name__ == "__main__":
     log_config=get_startup_logging_config(env),
     access_log=True,
   )
+

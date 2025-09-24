@@ -5,6 +5,7 @@ import reactivex as rx
 import reactivex.operators as ops
 from fastapi import Depends, HTTPException
 from pydantic import RootModel
+from reactivex import operators
 
 from git_server.sdk.data import FpAuthRes
 from server_core import (
@@ -102,7 +103,7 @@ class GithubSdk:
   def check_auth_status(self) -> rx.Observable[any]:
     token = self.__get_token()
     if not token:
-      print(token)
+      self.__logger.info('token is missing')
       raise HTTPException(
         status_code=401, detail="Not authenticated with GitHub."
       )
@@ -112,15 +113,17 @@ class GithubSdk:
       "X-GitHub-Api-Version": "2022-11-28",
     }
     url = "https://api.github.com/"
-
-    return self.__http_client_service.get(url, headers=headers)
+    return self.__http_client_service.get(url, headers=headers).pipe(
+      operators.do_action(self.__logger.json)
+    )
 
   def auth_state(self) -> rx.Observable[FpAuthRes]:
     return self.check_auth_status().pipe(
-      ops.map(lambda r: FpAuthRes(is_authenticated=r is not None)),
+      ops.map(lambda r: r is not None),
       ops.catch(
-        rx.just(FpAuthRes(is_authenticated=False))
+        rx.just(False)
       ),
+      ops.map(FpAuthRes),
     )
 
   def logout(self):

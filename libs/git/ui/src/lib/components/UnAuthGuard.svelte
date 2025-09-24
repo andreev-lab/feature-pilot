@@ -3,7 +3,7 @@
   import { isUserAuthenticated } from './is-user-authenticated';
 
   const authCheck = (async () => {
-    const auth = isUserAuthenticated()
+    const auth = await isUserAuthenticated()
     if (auth) {
       navigate('/', { replace: true });
     }

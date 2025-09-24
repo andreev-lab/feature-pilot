@@ -58,9 +58,6 @@ class GitService:
   async def list_repos(self, org: str) -> list[GitRepoRes]:
     return await self.__github_sdk.list_repos(org).pipe(operators.to_future())
 
-  def auth_state(self):
-    return self.__github_sdk.auth_state()
-
   def logout(self):
     self.__github_sdk.logout()
 
