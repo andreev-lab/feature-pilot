@@ -1,0 +1,12 @@
+{
+  "name": "infra-components",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "dependencies": {
+    "svelte": "^5.38.2",
+    "bits-ui": "^2.9.6"
+  }
+}

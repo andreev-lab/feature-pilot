@@ -2,13 +2,18 @@
 @use './style/varubals';
 @use './style/typografy';
 @use './style/utility-classes';
+@use './app';
 
 
 html, body {
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+
+html {
+  background-color: var(--color-background);
 }
 
 button,
@@ -22,21 +27,5 @@ select {
   background: transparent;
   border-radius: 0;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
-  transition: background-color 0.2s ease-in-out;
-}
-
-button:hover {
-  background-color: #0056b3;
 }

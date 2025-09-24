@@ -1,10 +1,8 @@
 <script lang="ts">
-  import {GitPage} from "@fp/git/ui"
+  import Router from "./app/Router.svelte"
 </script>
 
-<main>
-  <GitPage/>
-</main>
+<Router/>
 
 <style lang="scss">
   main {

@@ -14,7 +14,7 @@ from server_core import (
 
 from .data.git_repo_res import GitRepoRes
 from .git_sdk import GitSdk
-from .github_sdk import GithubSdk, inject_github_sdk
+from git_server.sdk.github_sdk import GithubSdk, inject_github_sdk
 
 
 class GitService:
@@ -58,8 +58,8 @@ class GitService:
   async def list_repos(self, org: str) -> list[GitRepoRes]:
     return await self.__github_sdk.list_repos(org).pipe(operators.to_future())
 
-  def auth_state(self):
-    return self.__github_sdk.auth_state()
+  def logout(self):
+    self.__github_sdk.logout()
 
 
 @lru_cache

@@ -1,9 +1,10 @@
-import { env, svFetch } from '@fp/infra/ui/data';
+import { env, fpFetch, svFetch } from '@fp/infra/ui/data';
+
 class _GitService {
-  #url = env.serverUrl;
+  #url = `${env.serverUrl}/git`;
 
   getRepoList(params: {org: string, pat: string}) {
-    return svFetch<{ repos: string[] }>(`${this.#url}/git/list-repos`, {
+    return svFetch<{ repos: string[] }>(`${this.#url}/list-repos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -11,10 +12,15 @@ class _GitService {
       body: JSON.stringify(params),
     })
   }
-  checkGithubAuth() {
-    return svFetch<{ authenticated: boolean }>(`${this.#url}/git/check-auth`, {
+
+  isUserAuthedOrThrow() {
+    return fpFetch<{ is_authenticated: boolean }>(`${this.#url}/auth`, {
       method: 'GET',
     });
+  }
+
+  logout() {
+    return fpFetch(`${this.#url}/logout`, { method: 'GET' });
   }
 }
 

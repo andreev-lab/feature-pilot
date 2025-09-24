@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
+from .auth import require_auth
 from .git_service import GitService, inject_git_service
 
 git_router = APIRouter(prefix="/git")
@@ -15,6 +16,9 @@ class GitRequest(BaseModel):
 class ListReposRequest(BaseModel):
   org: str
   pat: str
+
+
+
 
 
 @git_router.get("/login/github")
@@ -73,6 +77,12 @@ async def list_repos(
     raise HTTPException(status_code=500, detail=str(e)) from e
 
 
-@git_router.get("/check-auth")
-async def check_auth(git_service: GitService = Depends(inject_git_service)):
-  return  git_service.auth_state()
+@git_router.get("/auth", dependencies=[Depends(require_auth)])
+async def auth():
+  return {"message": "authenticated"}
+
+
+@git_router.get("/logout", dependencies=[Depends(require_auth)])
+async def logout(git_service: GitService = Depends(inject_git_service)):
+  git_service.logout()
+  return {"message": "logged out"}

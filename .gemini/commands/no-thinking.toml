@@ -1,0 +1,9 @@
+description = "Small task, no thinking"
+prompt = """This is a very small task that requires no thinking.
+Answer quickly.
+
+Task:
+```
+{{args}}
+```
+"""

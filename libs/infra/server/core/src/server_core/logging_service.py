@@ -1,8 +1,9 @@
+import json
 import logging
 import os
 import sys
 from functools import lru_cache
-from typing import Self, Optional
+from typing import Self, Optional, Dict
 
 from fastapi.params import Depends
 
@@ -84,6 +85,8 @@ class LoggingService:
   def get_logger(self: Self, name: str) -> logging.Logger:
     return self.logger.getChild(name)
 
+  def json(self, json_ob: Dict[str, any]):
+    self.info(json.dumps(json_ob, indent=2))
 
 @lru_cache()
 def inject_logger(

@@ -16,6 +16,7 @@ Don't serve the apps it will give you nothing, you'll get stuck waiting for the 
 4. In each file / class, properties / methods / vars / classes that aren't exported should be private. In TS use # for classes, in python use __ as a prefix.
 5. Don't add comments.
 6. For ui always use typescript for script lang and scss for style lang.
+7. UI component file should use PascaleCase naming.
 
 ### Key technologies
 

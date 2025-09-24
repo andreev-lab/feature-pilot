@@ -1,10 +1,12 @@
-import uvicorn
+import os
 
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from git_server.git_router import git_router
 from server_core import inject_db, EnvService, get_startup_logging_config
+from .config import get_reload_dirs
 from .hello import health_router as hello_router
 
 app = FastAPI()
@@ -36,35 +38,21 @@ def read_root():
   return {"message": "Hello from API"}
 
 
-state = 0
-
-
-@app.get('/state')
-def get_state():
-  return {
-    "state": state
-  }
-
-
-@app.put('/state')
-def increment_state():
-  global state
-  state += 1
-  if state % 5 == 0:
-    raise HTTPException(
-      status_code=400, detail=f"The state ({state}) is a multiple of 5!"
-    )
-  return get_state()
-
-
 env = EnvService()
 
 if __name__ == "__main__":
+  # To debug the python server, we need to run it using the IDE.When running via IDE directly using UV and not nx,
+  # it runs at to root level so src in not found and we need the full modul path.I've added the env var to the IDE
+  # script so that it picks up the correct module to enable debugging.
+  env_module = os.getenv("PY_MODULE")
+  module = env_module if env_module is not None else "src.main"
   uvicorn.run(
-    "src.main:app",
+    f"{module}:app",
     host="0.0.0.0",
     port=env.port,
     reload=True,
+    reload_dirs=get_reload_dirs(),
     log_config=get_startup_logging_config(env),
     access_log=True,
   )
+
