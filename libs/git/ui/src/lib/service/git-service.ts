@@ -18,6 +18,10 @@ class _GitService {
       method: 'GET',
     });
   }
+
+  logout() {
+    return fpFetch(`${this.#url}/logout`, { method: 'GET' });
+  }
 }
 
 export const GitService = new _GitService();

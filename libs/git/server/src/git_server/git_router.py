@@ -82,7 +82,7 @@ async def auth():
   return {"message": "authenticated"}
 
 
-@git_router.post("/logout")
+@git_router.get("/logout", dependencies=[Depends(require_auth)])
 async def logout(git_service: GitService = Depends(inject_git_service)):
   git_service.logout()
   return {"message": "logged out"}
